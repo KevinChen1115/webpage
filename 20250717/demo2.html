@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--錨點使用-->
+    <a name="achorA"></a>
+    <!--連結使用錨點-->
+    <a href="#錨點名稱">連結到頁面中的錨點</a><br>
+    <a href="demo.html#achorA">連結到demo.html葉面中的錨點achorA</a><br>
+    <!--沒有指令https，去指向到外站就是使用站內連結-->
+    <a href="www.google.com">前往Google搜尋錯誤版</a><br>
+    <a href="https://www.google.com">前往Google搜尋</a><br>
+    <!--traget="_blank" 預設開新分頁(重要)-->
+    <a href="https://www.google.com" target="_blank">前往Google搜尋blank</a><br>
+    <!--traget="_parent" 只在當前頁面作用-->
+    <a href="https://www.google.com" target="_parent">前往Google搜尋parent</a><br>
+    <!--traget="_self" 只在當前頁面作用-->
+    <a href="https://www.google.com" target="_self">前往Google搜尋self</a><br>
+    <!--traget="_top" 只在當前頁面作用-->
+    <a href="https://www.google.com" target="_top">前往Google搜尋top</a><br>
+    <!-- 基本郵件連結 -->
+    <a href="mailto:someone@example.com">發送郵件</a><br>
+    <!-- 帶主題和內容的郵件 -->
+    <a href="mailto:support@example.com?subject=問題回報&body=我遇到了以下問題：">聯絡客服</a><br>
+    <!-- 多個收件者 -->
+    <a href="mailto:person1@example.com,person2@example.com">群組郵件</a><br>
+    <!-- 下載檔案 -->
+    <a href="document.pdf" download>下載PDF文件</a><br>
+
+    <!-- 自訂下載檔名 -->
+    <a href="report.pdf" download="2024年度報告.pdf">下載年度報告</a><br>
+
+    
+</body>
+</html>
