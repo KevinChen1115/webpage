@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div p {
+            color:red; 
+            margin-bottom: 10px;
+        }
+        div > p{
+            color: blue;
+        }
+        /*相鄰於 h1 標籤下方同層級的 p 元素*/
+        h1 + p{
+            font-weight: bold;
+            margin-top: 0;
+        }
+        /* */
+        h1 ~ p{
+            color: blueviolet;
+        }
+        a{
+            text-decoration: none;
+            border:1px solid black;
+            background-color: blue;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 500;
+            padding: 0.5em;
+        }
+        a:hover{
+            background-color: red;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            我你他我你他我你他我你他我你他我你他我你他我你他
+        </p>
+        <a href="">這是超連結</a>
+    </div>
+    <div>
+        <section>
+            <p>
+                我你他我你他我你他我你他我你他我你他我你他我你他我你他
+            </p>
+        </section>
+    </div>
+</body>
+</html>

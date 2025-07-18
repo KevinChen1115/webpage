@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人履歷網頁</title>
+    <style>
+        /*針對這份html p元素修改*/
+        
+        p{
+            font-size: 1.6em !important;
+            color: rgb(241, 90, 39);
+        }
+        a{
+            text-decoration: none;
+        }
+        a:link {
+            color: blue; /* 未點擊過的連結顏色 */
+            }
+        a:visited {
+            color: rgb(75, 145, 226); /* 點擊過的連結顏色 */
+        }
+        a:hover {
+            color: red; /* 滑鼠移上去的顏色 */
+        }
+        a:active {
+            color: rgb(246, 184, 60); /* 點擊當下的顏色 */
+        }
+        .s1{
+            font-weight: bold;
+        }
+        h1{
+            text-align: center;
+        }
+        .h1head{
+            color: rgb(218, 27, 97);
+            
+        }
+        /* 用逗號 指令 多重套用外觀的對象 */
+        input[type="text"] ,input[type="email"]{
+            border: 1px solid #352d2d;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="h1head">個人履歷</h1>
+    
+    
+        
+        <!-- 基本資料區塊 -->
+        <fieldset>
+            <legend ><strong>個人基本資料</strong></legend>
+            <p><strong>照片:</strong><img src="../img/OIIAmeow.jpg" alt="" width="200px" height="120px"></p>
+            <!--!importtant權重高於inline style高於網頁內style的權重 -->
+            <p><strong class="s1">姓名:</strong>Kevin</p>
+            <p><strong>電郵:</strong>bbbb87@gmail.com</p>
+            <p ><strong>電話:</strong><a href="tel:+886-924861212">0924861212</a></p>
+        </fieldset>
+        
+        <!-- 個人資訊區塊 -->
+            <h1>教育背景</h1>
+        <table width="100%" border="1">        
+            <thead>
+                <tr>
+                    <th>學校名稱</th>
+                    <th>科系</th>
+                    <th>就讀期間</th>
+                    <th>學位</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>亞東科技大學</td>
+                    <td>資訊管理系</td>
+                    <td>2019-2023</td>
+                    <td>大學</td>
+                </tr>
+            </tbody>
+            
+        </table> 
+
+            
+        
+        <!-- 地址資訊區塊 -->
+        <h1>工作經驗</h1>
+        <table width="100%" border="1">        
+            <thead>
+                <tr>
+                    <th>公司名稱</th>
+                    <th>職位</th>
+                    <th>工作期間</th>
+                    <th>主要職責</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>合作金庫</td>
+                    <td>行政助理</td>
+                    <td>2024-2025</td>
+                    <td>寄卡片</td>
+                </tr>
+            </tbody>
+            
+        </table> <br>
+        
+        <!-- 興趣愛好區塊 -->
+        <fieldset>
+            <legend><strong>專業技能</strong></legend>
+            
+            <ul>
+        <li><a >HTML5/CSS3</a></li>
+        <li><a >Java</a></li>
+        <li><a >Linux</a></li>
+        <li><a >Spring</a></li>
+        <li><a >React</a></li>
+        <li><a >MySql</a></li>
+    </ul>
+        </fieldset>
+        
+        <!-- 其他資訊區塊 -->
+        <form method="post" enctype="multipart/form-data"></form>
+        <fieldset>
+            <legend><strong>其他資訊</strong></legend>
+            <p>
+                <label for="name">姓名：</label>
+                <input type="text" id="name" name="name" 
+                    title="請輸入姓名"
+                    placeholder="請輸入帳號" required>
+            </p>
+            
+            <p>
+                <label for="email">電郵：</label>
+                <input type="email" id="email" name="email" 
+                    placeholder="example@email.com" 
+                    autocomplete="email" required>
+            </p>
+
+            <p>
+                <label for="subject">主旨：</label>
+                <input type="text" id="subject" name="subject" 
+                    title="請輸入主旨"
+                    placeholder="請輸入主旨" required>
+            </p>
+            
+            
+            
+            <p>
+                <label for="message">訊息內容：
+                    <textarea id="message" name="message" 
+                            rows="6" cols="60"
+                            maxlength="500"
+                            placeholder="請輸入你想輸入的訊息">
+                    </textarea>
+                </label>
+            </p>
+            
+            
+        </fieldset>
+        
+        <!-- 同意條款 -->
+        
+        
+        <!-- 送出按鈕 -->
+        <p>
+            <button formaction="https://demo2505.contractors.com.tw/contact.php" type="submit">送出訊息</button>
+        </p>
+    </form>
+    
+</body>
+</html>
