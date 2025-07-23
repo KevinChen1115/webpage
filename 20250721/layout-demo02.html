@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        通用容器
+        */
+        .container{
+            max-width: 1200;
+            margin:0 auto; /* 元素置中 */
+            padding: 1em;
+        }
+        .title{
+            background-color: grey;
+            color: white;
+            padding: 1em;
+            margin: 1em;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .demo-div-container{
+            background-color: white;
+            border: 2px solid black;
+            margin:1em;
+            padding: 1em;
+            box-shadow: 0 2px 5px black rgba(0,0,0,0.1);
+        }
+        .flex-container {
+            display: flex;
+            /* 現在這個容器變成 Flex Container */
+            /* 它的直接子元素自動變成 Flex Items */
+        }
+        .flex-item{
+            background-color: aqua;
+            color: white;
+            min-width: 100px;
+            padding: 1em;
+            text-align: center;
+            margin: 5px;
+        }
+        /* 項目沿主軸的對齊方式 */
+        .justify-start {
+            display: flex;
+            justify-content: flex-start;    /* 靠開始對齊（預設） */
+        }
+
+        .justify-center {
+            display: flex;
+            justify-content: center;        /* 居中對齊 */
+        }
+
+        .justify-end {
+            display: flex;
+            justify-content: flex-end;      /* 靠結束對齊 */
+        }
+        .justify-between {
+            display: flex;
+            justify-content: space-between; /* 兩端對齊，中間等距 */
+        }
+
+        .justify-around {
+            display: flex;
+            justify-content: space-around;  /* 環繞對齊，項目周圍等距 */
+        }
+
+        .justify-evenly {
+            display: flex;
+            justify-content: space-evenly;  /* 完全等距分布 */
+        }
+        /* 項目沿交叉軸的對齊方式 */
+        .align-stretch {
+            display: flex; /*作用在容器上*/
+            align-items: stretch;       /* 拉伸填滿（預設） */
+        }
+        .align-start {
+            display: flex;
+            align-items: flex-start;    /* 靠開始對齊 */
+        }
+
+        .align-center {
+            display: flex;
+            align-items: center;        /* 居中對齊 */
+        }
+
+        .align-end {
+            display: flex;
+            align-items: flex-end;      /* 靠結束對齊 */
+        }
+        .align-baseline {
+            display: flex;
+            align-items: baseline;      /* 基線對齊 */
+        }
+        .no-wrap {
+            display: flex;
+            flex-wrap: nowrap;          /* 不換行（預設） */
+        }
+
+        .wrap { 
+            display: flex;
+            flex-wrap: wrap;            /* 換行 */
+        }
+
+        .wrap-reverse { /* 不常用 */
+            display: flex;
+            flex-wrap: wrap-reverse;    /* 反向換行 */
+        }
+        .perfect-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        .gap-container {
+            display: flex;
+            gap: 20px;                  /* 項目間距20px */
+        }
+
+        .gap-different {
+            display: flex;
+            row-gap: 30px;              /* 行間距 */
+            column-gap: 20px;           /* 列間距 */
+            flex-wrap: wrap;
+        }
+        .item-1 {
+            flex-grow: 1;               /* 佔1份 */
+        }
+
+        .item-2 {
+            flex-grow: 2;               /* 佔2份 */
+        }
+
+        .item-3 {
+            flex-grow: 1;               /* 佔1份 */
+        }
+        /* 總共4份，item-2佔其中的2份 */
+
+
+    </style>
+</head>
+<body id="#topbody">
+    <div class="container">
+        <div class="demo-div-container">
+            <div class="title">grow</div>
+            <div class="flex-container gap-container">
+                <div class="flex-item item-1">item1</div>
+                <div class="flex-item item-2">item2</div>
+                <div class="flex-item item-3">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="title">gap</div>
+            <div class="flex-container gap-container">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+                <div class="title">完美置中</div>
+                    <div class="flex-item perfect-center">
+                        <div class="flex-item">需要置中的對象</div>
+                    </div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container align-stretch">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2<br>多行內容<br>多行內容<br>多行內容<br>多行內容</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container align-start">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2<br>多行內容<br>多行內容<br>多行內容<br>多行內容</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container align-center">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2<br>多行內容<br>多行內容<br>多行內容<br>多行內容</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container align-end">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2<br>多行內容<br>多行內容<br>多行內容<br>多行內容</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container align-baseline">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2<br>多行內容<br>多行內容<br>多行內容<br>多行內容</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container justify-center">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container justify-end">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container justify-between">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container justify-around">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+        <div class="demo-div-container">
+            <div class="flex-container justify-evenly">
+                <div class="flex-item">item1</div>
+                <div class="flex-item">item2</div>
+                <div class="flex-item">item3</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        color: white;
+    }
+    .container{
+        margin: 0 auto;
+        width: 1280px;
+        box-shadow:  0 10% 10% 0 rgba(0,0,0,0.5);
+        background-color: antiquewhite;
+        display: flex;
+        gap: 1em;
+    }
+    .left-area{
+        background-color: aqua;
+        height: 100vh;
+    }
+    .center-area{
+        background-color: aquamarine;
+        height: 100vh;
+    }
+    .right-area{
+        background-color: blueviolet;
+        height: 100vh;
+    }
+    .item-1 {
+        flex-grow: 1;               /* 佔1份 */
+    }
+
+    .item-2 {
+        flex-grow: 2;               /* 佔2份 */
+    }
+
+    .item-3 {
+        flex-grow: 1;               /* 佔1份 */
+    }
+    @media screen and (max-width: 768px){
+        .container{
+        margin: 0 auto;
+        width: 100%;
+        box-shadow:  0 10% 10% 0 rgba(0,0,0,0.5);
+        background-color: antiquewhite;
+        display: flex;
+        gap: 1em;
+        flex-direction: column; /* 手機到平板的螢幕尺寸下，我要改成垂直的佈局*/
+        }
+        .item-1 {
+            flex-grow: 1;               /* 佔1份 */
+        }
+
+        .item-2 {
+            flex-grow: 1;               /* 佔2份 */
+        }
+
+        .item-3 {
+            flex-grow: 1;               /* 佔1份 */
+        }
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="left-area item-1">左邊的區塊</div>
+        <div class="center-area item-2">中間的區塊</div>
+        <div class="right-area item-3">右邊的區塊</div>
+    </div>
+</body>
+</html>

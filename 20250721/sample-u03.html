@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人履歷網頁</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            padding: 0px;
+            margin:0px;
+        }
+        .container{
+            max-width: 1280px;
+            margin: 0 auto;
+            min-height: 100vh;/* 確保容器最小高度占滿整個畫面*/
+            display: grid;
+            grid-template-rows: auto auto 1fr auto;
+            grid-template-areas: 
+            "navbar"
+            "header"
+            "main"
+            "footer";
+        }
+        /* 優化電腦版的呈現*/
+        .navbar{
+            background-color: #fa9f28;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            grid-area: navbar;
+        }
+        .nav-container{
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            padding: 0 20px;
+            justify-content: space-between;
+            align-content: center;
+            height: 60px;
+        }
+        .nav-menu{
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-item{
+            position: relative;
+        }
+        .nav-item a{
+            color: white;
+            text-decoration: none;
+            padding: 20px 15px;
+            display: block;
+            transition: background-color 0.7s;
+        }
+        .nav-item a:hover{
+            background-color: #ffce84;
+        }
+        .nav-toggle{
+            /*電腦板時隱藏*/
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            text-align: center;
+            justify-content: center;
+        }
+        .nav-toggle .bar{
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0px;
+            transition: 0.3s;
+        }
+        #nav-checkbox{
+            display: none; /* 勾選方塊時始終保持隱藏*/
+        }
+        .nav-overlay{
+            position: fixed;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 998;
+            opacity: 0;
+        }
+        #nav-checkbox:checked ~ .nav-overlay{
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* grid 版片設定中 header 的區塊 */
+        .header{
+            background-image: linear-gradient(25deg, #3f87a6, #ebf8e1, #f69d3c);
+            color: white;
+            padding: 2em;
+            text-align: center;
+            position: relative;
+            grid-area: header;
+            /*使用flex 來控制 容器中的項目對齊方式*/
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .avatar{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid white;
+            display:block;
+            margin: auto;
+            overflow:hidden;
+            justify-content: center;
+            /* 沒有flex屬性前用來把原色置中設定 /
+            / margin-left: auto;
+            margin-right: auto; */
+
+        }
+        .avatar img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: -70px center;
+
+        }
+
+        
+        /* 用grid把這個區塊變成左右兩邊*/
+        .main-content{
+            display: grid;
+            grid-template-areas:
+            "sidebar content"
+            ;
+            grid-template-columns: 300px 1fr;
+            min-height: 600px;
+            grid-area: main;
+        }
+        .sidebar{
+            grid-area:sidebar;
+            background-color: aliceblue;
+            padding: 2em;
+        }
+        .content{
+            grid-area: content;
+            padding: 2em;
+        }
+        .footer{
+                grid-area: footer;
+                background-color: #3f87a6;
+                color: white;
+                text-align: center;
+                padding: 1em;
+            }
+        /* 當顯示的媒體為電腦螢幕(或手機螢幕)時，尺寸只到768像素時的顯示設定*/
+        @media screen and (max-width:768px){
+            .nav-toggle{
+            /*手機板時顯示*/
+                display: flex;
+            
+            }
+            /* 設定選單在手機板的位置*/
+            .nav-menu{
+                position: fixed;
+                left: -100%;/* 初始位置在螢幕左側相同的寬度位置不出現在目前螢幕上*/
+                top:60px; /* 高度對齊在navbar下方 */
+                flex-direction: column; /*垂直顯示指向子項目 */
+                width: 100%;
+                background-color: rgba(0,174,255,0.8);
+                text-align: center;
+                z-index: 999;
+                transition: left 0.3s ease;
+                height: 100vh;
+            }
+            #nav-checkbox:checked ~ .nav-container .nav-menu {
+                left: 0;
+            /* 選單滑入螢幕可視範圍 */
+            }
+            #nav-checkbox:checked ~ .nav-container .nav-toggle .bar:nth-child(1){
+                transform: rotate(45deg) translate(-5px, 6px);
+            }
+            #nav-checkbox:checked ~ .nav-container .nav-toggle .bar:nth-child(2){
+                opacity: 0;
+            }
+            #nav-checkbox:checked ~ .nav-container .nav-toggle .bar:nth-child(3){
+                transform: rotate(-45deg) translate(-8px, -6px);
+            }
+            /* 手機呈現時，main-content 的grid 排列方式*/
+            .main-content{
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                "sidebar"
+                "content"
+                ;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <!-- 設定頁面內容導航的元素 -->
+        <nav class="navbar">
+            <!--要使用checkbox 來觸發手機板側邊選單的呈現-->
+            <input type="checkbox" id="nav-checkbox">
+            <!--這個標籤是用來延伸上面這個核取方塊，當背景遮罩出現時，點選此標籤可以關閉選單-->
+            <label for="nav-checkbox" class="nav-overlay"></label>
+            <!--漢堡選單的組成-->
+            <div class="nav-container">
+                <ul class="nav-menu">
+                        <li class="nav-item"><a href="#about">基本資料</a></li>
+                        <li class="nav-item"><a href="#edu">教育背景</a></li>
+                        <li class="nav-item"><a href="#resume">工作經驗</a></li>
+                        <li class="nav-item"><a href="#skill">專業技能列</a></li>
+                        <li class="nav-item"><a href="#projects">專案經歷</a></li>
+                        <li class="nav-item"><a href="#contact">聯絡我</a></li>
+                </ul>
+                <label for="nav-checkbox" class="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </label>
+            </div>
+
+        </nav>
+        
+        <!-- 頁首 -->
+        <header class="header">
+            <div class="avatar">
+                <img src="../img/OIIAmeow.jpg" alt="個人照片" width="500"  >
+            </div>
+            <h1>Kevin</h1>
+            <p>Java 全端工程師</p>
+        </header>
+        
+        
+        <!-- 主要顯示區塊 -->
+        <main class="main-content">
+                <!-- 基本資料區塊 -->
+            <aside class="sidebar">
+                    <section id="about">
+                        <h2 class="h1head">個人履歷</h2>
+                        <legend ><strong>個人基本資料</strong></legend>
+                        <!--!importtant權重高於inline style高於網頁內style的權重 -->
+                        <p><strong class="s1">姓名:</strong>Kevin</p>
+                        <p><strong>電郵:</strong>bbbb87@gmail.com</p>
+                        <p ><strong>電話:</strong><a href="tel:+886-924861212">0924861212</a></p>
+                    </section>
+            </aside>
+            <div class="content">
+                <!-- 教育背景區塊 -->
+                <section id="edu">
+                        <h2>教育背景</h2>
+                        <table>        
+                            <thead>
+                                <tr>
+                                    <th>學校名稱</th>
+                                    <th>科系</th>
+                                    <th>就讀期間</th>
+                                    <th>學位</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>亞東科技大學</td>
+                                    <td>資訊管理系</td>
+                                    <td>2019-2023</td>
+                                    <td>大學</td>
+                                </tr>
+                            </tbody>
+                            
+                        </table> 
+                </section>
+                <!-- 工作經驗區塊 -->
+                <section id="resume">
+                        <h2>工作經驗</h2>
+                        <table>        
+                            <thead>
+                                <tr>
+                                    <th>公司名稱</th>
+                                    <th>職位</th>
+                                    <th>工作期間</th>
+                                    <th>主要職責</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>合作金庫</td>
+                                    <td>行政助理</td>
+                                    <td>2024-2025</td>
+                                    <td>寄卡片</td>
+                                </tr>
+                            </tbody>
+                            
+                        </table> <br>
+                </section>
+                <!-- 專業技能區塊 -->
+                <section id="skill">
+                            <legend><strong>專業技能</strong></legend>
+                            
+                            <ul>
+                                <li><a >HTML5/CSS3</a></li>
+                                <li><a >Java</a></li>
+                                <li><a >Linux</a></li>
+                                <li><a >Spring</a></li>
+                                <li><a >React</a></li>
+                                <li><a >MySql</a></li>
+                            </ul>
+                </section>
+                <section id="projects">
+                    <h2>專案經歷</h2>
+                </section>
+                <!-- 聯絡我們區塊 -->
+                <section id="contact">
+                    <form method="post" enctype="multipart/form-data">
+                        
+                            <h2><strong>聯絡我</strong></h2>
+                            <p>
+                                <label for="name">姓名：</label>
+                                <input type="text" id="name" name="name" 
+                                    title="請輸入姓名"
+                                    placeholder="請輸入帳號" required>
+                            </p>
+                            
+                            <p>
+                                <label for="email">電郵：</label>
+                                <input type="email" id="email" name="email" 
+                                    placeholder="example@email.com" 
+                                    autocomplete="email" required>
+                            </p>
+
+                            <p>
+                                <label for="subject">主旨：</label>
+                                <input type="text" id="subject" name="subject" 
+                                    title="請輸入主旨"
+                                    placeholder="請輸入主旨" required>
+                            </p>
+                            
+                            
+                            
+                            <p>
+                                <label for="message">訊息：</label>
+                                    <textarea id="message" name="message" 
+                                        rows="6" cols="60"
+                                        maxlength="500"
+                                        placeholder="請輸入你想輸入的訊息">
+                                    </textarea>
+                            </p>
+                            
+                            
+                        <!-- 送出按鈕 -->
+                        <p>
+                            <button class="mybtn",class="submit" formaction="https://demo2505.contractors.com.tw/contact.php" type="submit">送出訊息</button>
+                            <button class="mybtn", class="reset" formaction="">重新填寫</button>
+                        </p>
+                    </form>    
+                </section>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>我是footer</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        先reset css
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /*
+        通用容器
+        */
+        .container{
+            max-width: 1200;
+            margin:0 auto; /* 元素置中 */
+            padding: 1em;
+        }
+        .title{
+            background-color: grey;
+            color: white;
+            padding: 1em;
+            margin: 1em;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .demo-div-container{
+            background-color: white;
+            border: 2px solid black;
+            margin:1em;
+            padding: 1em;
+            box-shadow: 0 2px 5px black rgba(0,0,0,0.1);
+        }
+        .block-demo {
+            display: block;
+            width: 300px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 10px 0;
+            padding: 20px;
+        }
+        .inline-demo {
+            display: inline;
+            background-color: #e74c3c;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+        .inline-block-demo {
+            display: inline-block;
+            width: 150px;
+            height: 100px;
+            background-color: #2ecc71;
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+            vertical-align: top;/*垂直對齊*/
+        }
+        .display-demo-div{
+            background-color: rgba(255, 174, 0, 0.1);
+            border-bottom: 1px solid white;
+        }
+        /* display: none - 完全消失，不佔空間 */
+        .hidden-display {
+            display: none;
+        }
+
+        /* visibility: hidden - 隱藏但仍佔空間 */
+        .hidden-visibility {
+            visibility: hidden;
+        }
+        .static-demo {
+            position: static; /* 可以省略，因為是預設值 */
+            background-color: #f39c12;
+            padding: 20px;
+        }
+        .bkc01{
+            background-color: #f39c12;
+        }
+        .relative-demo {
+            position: relative;
+            top: 20px;        /* 向下移動20px */
+            left: 30px;       /* 向右移動30px */
+            background-color: #9b59b6;
+            padding: 15px;
+        }
+        .relative-parent {
+            position: relative;
+            /*width: 300px;
+            height: 200px;*/
+            background-color: #ecf0f1;
+            border: 2px solid #bdc3c7;
+        }
+
+        .absolute-child {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 60px;
+            background-color: #e74c3c;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+        }
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            z-index: 900;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            line-height: 50px;
+            text-align: center;
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background-color: #d6ef1c;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            z-index: 1000;
+        }
+
+    </style>
+</head>
+<body id="topbody">
+    <div class="container">
+        <div class="demo-div-container">
+            <div class="title">Position sticky</div>
+            <div class="bkc01">這是黏性元素 sticky</div>
+        <div class="demo-div-container fixed-nav">
+            <div class="title">Position fixed</div>
+            <div class="bkc01">這是固定元素 Fixed</div>
+            <div class="back-to-top"><a href="#topbody">TOP</a></div>
+        </div>
+        <div class="demo-div-container relative-parent">
+            <div class="title">Position Absolute</div>
+            <div class="bkc01">靜態定位元素 - 這是可視元素的預設定位方</div>
+            <div class="absolute-child">絕對定位元素 - 這是可視元素的相對定位方式</div>
+        </div>
+        <div class="demo-div-container">
+            <div class="title">Position Relative</div>
+            <div class="bkc01">靜態定位元素 - 這是可視元素的預設定位方</div>
+            <div class="relative-demo">相對定位元素 - 這是可視元素的相對定位方式</div>
+            <div class="bkc01">靜態定位元素 - 這是可視元素的預設定位方</div>
+        </div>
+        <div class="demo-div-container">
+            <div class="title">Position Static</div>
+            <div class="static-demo">靜態定位元素 - 這是可視元素的預設定位方式</div>
+            <div class="bkc01">靜態定位元素 - 這是可視元素的預設定位方</div>
+        </div>
+        <div class="demo-div-container">
+            <div class="title">1.block元素</div>
+            <div class="block-demo">區塊1</div>
+            <div class="block-demo">區塊2</div>
+        </div>
+        <div class="demo-div-container">
+            <div class="title">2.inline元素</div>
+            <span class="inline-block">行內元素1</span>
+            <span class="inline-block">行內元素2</span>
+            <span class="inline-block">行內元素3</span>
+        </div>
+        <div class="demo-div-container">
+            <div class=""></div>
+        </div>
+        <div class="demo-div-container">
+            <div class="title">3. inline-block元素</div>
+            <div class="inline-block-demo">卡片1</div>
+            <div class="inline-block-demo">卡片2</div>
+            <div class="inline-block-demo">卡片3</div>
+        </div class="demo-div-container">
+            <div class="title">4.display none vs visibility: hidden</div>
+            <div class="display-demo-div">display正常</div>
+            <div class="display-demo-div hidden-display">hidden-display</div>
+            <div class="display-demo-div">display正常</div>
+            <div class="display-demo-div hidden-visibility">hidden-visibility</div>
+            <div class="display-demo-div">display正常</div>
+
+    </div>
+</body>
+</html>

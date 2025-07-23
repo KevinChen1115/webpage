@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            padding-left: 0;
+            list-style: none;
+        }
+        li {
+            display: inline-block;
+            width: 220px;
+            margin-left: 1em;
+            background-color: aquamarine;
+            position: relative;
+        }
+        li:hover{
+            background-color: rgb(242, 255, 3);
+        }
+        li > a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+        }
+        
+        .submenu{
+            display: none;
+            position: absolute;
+            left: 24px;
+        }
+        .submenu li{
+            background-color: blueviolet;
+            width: 180px;
+        }
+        .submenu li:hover{
+            background-color:  rgb(242, 255, 3);
+        }
+        /*li:hover 狀態下找到後台為ul submenu的對象 設display為block*/
+        li:hover ul.submenu{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="javascript:;">選單一</a></li>
+        <li><a href="javascript:;">選單二</a></li>
+        <li><a href="javascript:;">選單三</a>
+            <ul class="submenu">
+                <li><a href="javascript:;">選單三-1</a></li>
+                <li><a href="javascript:;">選單三-2</a></li>
+                <li><a href="javascript:;">選單三-3</a></li>
+            </ul>
+        </li>
+        <li><a href="javascript:;">選單四</a></li>
+        <li><a href="javascript:;">選單五</a></li>
+        <li><a href="javascript:;">選單六</a></li>
+    </ul>
+    
+</body>
+</html>
