@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color-display-div{
+            width: 150px;
+            height: 150px;
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <h1>互動式調色盤</h1>
+    <div class="color-display-div" id="color-Display">
+
+    </div>
+    <div>
+        <label for="red_val">紅色 R (between 0 and 255):</label>
+        <input type="range" id="red_val" name="red_val" min="0" max="255">
+        <span id="redspan">(255)</span>
+    </div>
+    <div>
+        <label for="green_val">綠色 G (between 0 and 255):</label>
+        <input type="range" id="green_val" name="green_val" min="0" max="255">
+        <span id="greenspan">(255)</span>
+    </div>
+    <div>
+        <label for="blue_val">藍色 B (between 0 and 255):</label>
+        <input type="range" id="blue_val" name="blue_val" min="0" max="255">
+        <span id="bluespan">(255)</span>
+    </div>
+    <script>
+        //我們要先取得range 這些物件，document.getElementById 這個方法
+
+        let red = document.getElementById("red_val");
+        let green = document.getElementById("green_val");
+        let blue = document.getElementById("blue_val");
+        console.log(red.value);
+        console.log(green.value);
+        console.log(blue.value);
+        //監聽RGB捲動軸數值變動的事件
+        red.addEventListener('input', updateColor);
+        green.addEventListener('input', updateColor);
+        blue.addEventListener('input', updateColor);
+
+        function updateColor(){
+            console.log("事件被觸發了!!!");
+            let redVal = parseInt(red.value);//強轉成整數
+            let greenVal = parseInt(green.value);//強轉成整數
+            let blueVal = parseInt(blue.value);//強轉成整數
+            document.getElementById("redspan").textContent = redVal;
+            document.getElementById("greenspan").textContent = greenVal;
+            document.getElementById("bluespan").textContent = blueVal;
+            let rgbColor = `rgb(${redVal}, ${greenVal}, ${blueVal})`;
+            //存取元素的style 屬性， 選擇背景色
+            document.getElementById("color-Display").style.backgroundColor = rgbColor;
+        }
+        updateColor();
+    </script>
+</body>
+</html>

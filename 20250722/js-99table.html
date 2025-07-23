@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        // let htmlStr = "";
+        // htmlStr += "<table border='1'>";
+        // for (let i = 1; i <= 9; i++){
+        //     htmlStr += `<tr>`;
+        //         for(let j = 1; j <= 9; j++){
+        //             htmlStr += `<td> ${i} * ${j} = ${i*j}`;
+        //         }
+        //         htmlStr += "</tr>";
+        // }
+        // htmlStr += "`</table>";
+        // document.write(htmlStr);
+        
+        let mtStr = my99table();
+        console.log(myStr);
+        function my99table(){
+            let htmlStr = "";
+            htmlStr += "<table border='1'>";
+            for (let i = 1; i <= 9; i++){
+                htmlStr += `<tr>`;
+                    for(let j = 1; j <= 9; j++){
+                        htmlStr += `<td> ${i} * ${j} = ${i*j}`;
+                    }
+                    htmlStr += "</tr>";
+            }
+            htmlStr += "`</table>";
+            document.write(htmlStr);
+            return htmlStr;
+        }    
+            // const calculateBMI = function(weight, height) {
+            //     return weight / (height * height);
+            // };
+
+            // 完整寫法
+            const calculateBMI = (weight, height) => {
+                return weight / (height * height);
+            };
+            let bmi = calculateBMI(100,180);
+            
+            let name = "全域小明";
+
+            function introduce() {
+                let name = "區域小華";  // 這會遮蔽全域的name變數
+                console.log(name);     // "區域小華"
+            }
+
+            introduce();        // "區域小華"
+            console.log(name);  // "全域小明"
+
+            let animals = ["貓", "狗"];
+
+            animals[3] = '龜';
+            // 在末尾新增
+            animals.push("鳥");        // ["貓", "狗", "鳥"]
+            animals.push("魚", "兔");  // ["貓", "狗", "鳥", "魚", "兔"]
+
+            // 在開頭新增
+            animals.unshift("象");     // ["象", "貓", "狗", "鳥", "魚", "兔"]
+            console.log(animals);
+
+            let subjects = ["數學", "英文", "自然"];
+
+            for (let subject of subjects) {
+                console.log(`我要學習：${subject}`);
+            }
+
+            let fruits = ["蘋果", "香蕉", "橘子"];
+
+            // 檢查是否包含
+            console.log(fruits.includes("香蕉"));  // true
+            console.log(fruits.includes("西瓜"));  // false
+
+            // 找到位置
+            console.log(fruits.indexOf("橘子"));   // 2
+            console.log(fruits.indexOf("西瓜"));   // -1（找不到）
+
+            let numbers = [1, 2, 3, 4];
+
+            // 轉成字串
+            console.log(numbers.join(", "));    // "1, 2, 3, 4"
+            console.log(numbers.join(" -> "));  // "1 -> 2 -> 3 -> 4"
+            
+            // 反轉陣列 真的改原始排序
+            numbers.reverse();
+            console.log(numbers);  // [4, 3, 2, 1]
+
+            
+    </script>
+</body>
+</html>
